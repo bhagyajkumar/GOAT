@@ -21,7 +21,7 @@ function NavBar() {
                         >
                             <Nav.Link href="#action1">Home</Nav.Link>
                             <Nav.Link href="#action2">Friends</Nav.Link>
-                            <NavDropdown title="Link" id="navbarScrollingDropdown">
+                            <NavDropdown title="Account" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action4">
                                     Another action

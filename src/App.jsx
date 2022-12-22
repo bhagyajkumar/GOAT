@@ -2,16 +2,27 @@ import React from 'react'
 import NavBar from './Components/NavBar/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState } from 'react'
-import DebtDetails from './Components/TransactionCards/Cards'
-import { Container } from 'react-bootstrap'
+import Home from './Components/Pages/Home/Home'
+import Error from './Components/Pages/Home/Error'
+import {
+  createBrowserRouter,
+  RouterProvider
+} from 'react-router-dom'
+
 function App() {
-  let len = 1
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <Home />,
+        errorElement: <Error />
+      }
+    ]
+  )
   return (
     <div className="App">
       <NavBar />
-      <Container>
-        <DebtDetails length={len} />
-      </Container>
+      <RouterProvider router={router} />
 
     </div>
   )
