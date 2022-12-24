@@ -8,22 +8,26 @@ import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom'
+import { AuthProvider } from './Context/AuthContext'
+import LoginPage from './Components/Pages/Home/Login/LoginPage'
 
 function App() {
   const router = createBrowserRouter(
     [
       {
         path: "/",
-        element: <Home />,
+        element: <AuthProvider><Home /></AuthProvider>,
         errorElement: <Error />
+      },
+      {
+        path: "/login",
+        element: <AuthProvider><LoginPage /></AuthProvider>,
       }
     ]
   )
   return (
     <div className="App">
-      <NavBar />
       <RouterProvider router={router} />
-
     </div>
   )
 }

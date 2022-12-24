@@ -1,14 +1,15 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { useContext } from "react";
+import AuthContext from "../../Context/AuthContext";
+
 
 function NavBar() {
+
+    const { user } = useContext(AuthContext)
+
     return (
-        <div>
+        <>
             <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
                 <Container fluid>
                     <Navbar.Brand href="#">G.O.A.T</Navbar.Brand>
@@ -21,15 +22,26 @@ function NavBar() {
                         >
                             <Nav.Link href="#action1">Home</Nav.Link>
                             <Nav.Link href="#action2">Friends</Nav.Link>
-                            <NavDropdown title="Account" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">
-                                    Another action
-                                </NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
-                                    Something else here
-                                </NavDropdown.Item>
+                            <NavDropdown title={user ? user.username : "Account"} id="navbarScrollingDropdown">
+                                {
+                                    user ?
+                                        (
+                                            <NavDropdown.Item href="#action4">
+                                                Logout
+                                            </NavDropdown.Item>
+                                        )
+                                        :
+                                        (
+                                            <>
+                                                <NavDropdown.Item href="#action4">
+                                                    Login
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Item href="#action4">
+                                                    Signup
+                                                </NavDropdown.Item>
+                                            </>
+                                        )
+                                }
                             </NavDropdown>
 
                         </Nav>
@@ -48,7 +60,7 @@ function NavBar() {
             <br />
             <br />
             <br />
-        </div>
+        </>
     )
 
 }
