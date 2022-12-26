@@ -4,7 +4,6 @@ import { useRouteError } from 'react-router-dom'
 
 function Error() {
     const error = useRouteError()
-    console.log(error);
     return (
         <Container>
             <Card>
@@ -14,7 +13,7 @@ function Error() {
                 <Card.Body>
                     <h3>
                         <p>
-                            {error.error.message}
+                            {error?.error}
                         </p>
                     </h3>
                 </Card.Body>

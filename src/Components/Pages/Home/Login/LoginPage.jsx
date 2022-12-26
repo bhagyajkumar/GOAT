@@ -14,8 +14,7 @@ function LoginPage() {
         let username = e.target.username.value
         let password = e.target.password.value
         loginUser(username, password)
-        // navigate("/")
-        
+        navigate("/")
     }
 
     return (

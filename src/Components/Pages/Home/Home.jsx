@@ -6,12 +6,12 @@ import { AuthProvider } from '../../../Context/AuthContext'
 
 function Home() {
     return (
-        <AuthProvider>
+        <>
             <NavBar />
             <Container>
                 <DebtDetails />
             </Container>
-        </AuthProvider>
+        </>
     )
 }
 

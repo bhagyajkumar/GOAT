@@ -2,11 +2,13 @@ import React from "react";
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 function NavBar() {
 
-    const { user } = useContext(AuthContext)
+    const { user, logoutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     return (
         <>
@@ -26,14 +28,14 @@ function NavBar() {
                                 {
                                     user ?
                                         (
-                                            <NavDropdown.Item href="#action4">
+                                            <NavDropdown.Item onClick={() => { logoutUser(); navigate("/login") }} >
                                                 Logout
                                             </NavDropdown.Item>
                                         )
                                         :
                                         (
                                             <>
-                                                <NavDropdown.Item href="#action4">
+                                                <NavDropdown.Item onClick={() => navigate("/login")}>
                                                     Login
                                                 </NavDropdown.Item>
                                                 <NavDropdown.Item href="#action4">
